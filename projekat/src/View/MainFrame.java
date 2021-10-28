@@ -28,6 +28,18 @@ public class MainFrame extends JFrame {
         MyToolBar toolBar= new MyToolBar();
         add(toolBar, BorderLayout.NORTH);
 
+        JPanel stabloPL= new JPanel();
+        JPanel radnaPovrsPL= new JPanel();
+
+        JScrollPane stabloScP= new JScrollPane(stabloPL);
+        stabloPL.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
+
+//        stabloPL.add(stabloScP, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
+//                , JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        JSplitPane stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloPL, radnaPovrsPL);
+
+        add(stblRadnaSpP, BorderLayout.CENTER);
     }
 
     public static MainFrame getInstance(){
