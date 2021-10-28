@@ -1,5 +1,8 @@
 package View;
 
+import Model.MyMenuBar;
+import Model.MyToolBar;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +22,11 @@ public class MainFrame extends JFrame {
         setTitle("Rukovodilac Dokumenata");
         setVisible(true);
 
+        MyMenuBar menuBar= new MyMenuBar();
+        setJMenuBar(menuBar);
 
+        MyToolBar toolBar= new MyToolBar();
+        add(toolBar, BorderLayout.NORTH);
 
     }
 
