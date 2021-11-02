@@ -1,5 +1,7 @@
 package Model;
 
+import View.MainFrame;
+
 import javax.swing.*;
 
 public class MyMenuBar extends JMenuBar {
@@ -9,9 +11,7 @@ public class MyMenuBar extends JMenuBar {
         JMenu help= new JMenu("Help");
         JMenu edit= new JMenu("Edit");
 
-        JMenuItem nov= new JMenuItem("New");
-
-        file.add(nov);
+        file.add(MainFrame.getInstance().getActionManager().getNewAction());
 
         add(file);
         add(help);

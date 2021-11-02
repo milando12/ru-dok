@@ -1,5 +1,8 @@
 package Controller;
 
+import View.InfoDijalog;
+import View.MainFrame;
+
 import java.awt.event.ActionEvent;
 
 public class InfoAction extends AbstractRudokAction{
@@ -12,6 +15,7 @@ public class InfoAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        InfoDijalog infoDijalog= new InfoDijalog(MainFrame.getInstance());
+        infoDijalog.setVisible(true);
     }
 }

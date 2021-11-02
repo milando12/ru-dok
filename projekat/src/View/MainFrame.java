@@ -29,7 +29,7 @@ public class MainFrame extends JFrame {
         MyMenuBar menuBar= new MyMenuBar();
         setJMenuBar(menuBar);
 
-        MyToolBar toolBar= new MyToolBar();
+        MyToolBar toolBar= new MyToolBar(this);
         add(toolBar, BorderLayout.NORTH);
 
         JPanel stabloPL= new JPanel();
