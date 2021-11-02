@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ActionManager;
 import Model.MyMenuBar;
 import Model.MyToolBar;
 
@@ -10,7 +11,10 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance= null;
 
+    private ActionManager actionManager;
+
     private MainFrame(){
+        actionManager= new ActionManager();
     }
 
     private void initialize(){
@@ -48,5 +52,13 @@ public class MainFrame extends JFrame {
             instance.initialize();
         }
         return instance;
+    }
+
+    public ActionManager getActionManager() {
+        return actionManager;
+    }
+
+    public void setActionManager(ActionManager actionManager) {
+        this.actionManager = actionManager;
     }
 }
