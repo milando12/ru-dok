@@ -1,8 +1,6 @@
 package View;
 
 import Controller.ActionManager;
-import Model.MyMenuBar;
-import Model.MyToolBar;
 
 import javax.swing.*;
 import java.awt.*;

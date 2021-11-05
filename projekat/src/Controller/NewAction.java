@@ -1,8 +1,10 @@
 package Controller;
 
+import Controller.AbstractRudokAction;
+
 import java.awt.event.ActionEvent;
 
-public class NewAction extends AbstractRudokAction{
+public class NewAction extends AbstractRudokAction {
 
     public NewAction() {
         putValue(SMALL_ICON, loadIcon("slike/new.png"));

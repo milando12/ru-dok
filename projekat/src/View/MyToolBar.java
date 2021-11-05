@@ -1,4 +1,4 @@
-package Model;
+package View;
 
 import View.MainFrame;
 
@@ -10,7 +10,7 @@ public class MyToolBar extends JToolBar {
 
         super(SwingConstants.HORIZONTAL);
 
-        setPreferredSize(new Dimension(50,50));
+        setPreferredSize(new Dimension(50,40));
 //        JButton newBT= new JButton(MainFrame.getInstance().getActionManager().getNewAction());
 //        newBT.setToolTipText("New");
 //
@@ -22,12 +22,10 @@ public class MyToolBar extends JToolBar {
 //
 //        add(infoBT);
 
-        add(MainFrame.getInstance().getActionManager().getNewAction())
-                /*.setMaximumSize(new Dimension(10, 10))*/;
+        add(MainFrame.getInstance().getActionManager().getNewAction());
         addSeparator();
 
-        add(MainFrame.getInstance().getActionManager().getInfoAction())
-                /*.setMaximumSize(new Dimension(10, 10))*/;
+        add(MainFrame.getInstance().getActionManager().getInfoAction());
 
         setBackground(new Color(135,206,250));
     }

@@ -1,11 +1,12 @@
 package Controller;
 
+import Controller.AbstractRudokAction;
 import View.InfoDijalog;
 import View.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class InfoAction extends AbstractRudokAction{
+public class InfoAction extends AbstractRudokAction {
 
     public InfoAction() {
         putValue(SMALL_ICON, loadIcon("slike/info.jpg"));
