@@ -1,21 +1,40 @@
 package View;
 
 import Controller.ActionManager;
+import View.mainFrameComponents.MyMenuBar;
+import View.mainFrameComponents.MyToolBar;
+import View.tree.model.MyModel;
+import View.tree.view.MyJTree;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Getter
+@Setter
 public class MainFrame extends JFrame {
 
     private static MainFrame instance= null;
 
     private ActionManager actionManager;
+    private MyJTree myJTree;
+    private MyModel myModel;
 
     private MainFrame(){
         actionManager= new ActionManager();
+
     }
 
-    private void initialize(){
+    private void initialiseTree(){
+        myJTree= new MyJTree();
+        myModel= new MyModel();
+
+        myJTree.setModel(myModel);
+
+    }
+
+    private void initializeGUI(){
         Toolkit toolkit= Toolkit.getDefaultToolkit();
         Dimension dimension= toolkit.getScreenSize();
         setSize((int)dimension.getWidth()/2, (int)dimension.getHeight()/2);
@@ -33,13 +52,13 @@ public class MainFrame extends JFrame {
         JPanel stabloPL= new JPanel();
         JPanel radnaPovrsPL= new JPanel();
 
-        JScrollPane stabloScP= new JScrollPane(stabloPL);
-        stabloPL.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
+        JScrollPane stabloScP= new JScrollPane(myJTree);
+        stabloScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
 
 //        stabloPL.add(stabloScP, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
 //                , JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        JSplitPane stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloPL, radnaPovrsPL);
+        JSplitPane stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloScP, radnaPovrsPL);
 
         add(stblRadnaSpP, BorderLayout.CENTER);
     }
@@ -47,16 +66,10 @@ public class MainFrame extends JFrame {
     public static MainFrame getInstance(){
         if (instance== null){
             instance= new MainFrame();
-            instance.initialize();
+            instance.initialiseTree();
+            instance.initializeGUI();
         }
         return instance;
     }
 
-    public ActionManager getActionManager() {
-        return actionManager;
-    }
-
-    public void setActionManager(ActionManager actionManager) {
-        this.actionManager = actionManager;
-    }
 }
