@@ -1,7 +1,7 @@
 package View;
 
-import Controller.ChangeAuthorAction;
-import Controller.ChangeThemeAction;
+import Controller.EditPresentation.ChangeAuthorAction;
+import Controller.EditPresentation.ChangeThemeAction;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +22,7 @@ public class EditPresentationDialog extends JDialog {
     private JButton drugiBT= new JButton("Potvrdi");
 
     public EditPresentationDialog(Frame parent){
-        super(parent, "Edit", false);
+        super(parent, "Edit", true);
 
         Toolkit toolkit= Toolkit.getDefaultToolkit();
         Dimension dimension= toolkit.getScreenSize();

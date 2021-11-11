@@ -1,4 +1,4 @@
-package Controller;
+package Controller.EditPresentation;
 
 import Model.tree.Prezentation;
 import View.EditPresentationDialog;

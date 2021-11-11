@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.EditPresentation.ChangePresentationAction;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ public class ActionManager {
     private InfoAction infoAction;
     private NewAction newAction;
     private ChangePresentationAction changePresentation;
+    private RemoveAction removeAction;
 
 //    private PromenaAutoraPrezentacijeAction promenaAutoraPrezentacijeAction;
 //    private PromenaPozadinskeSlikePrezentacijeAction promenaPozadinskeSlikePrezentacijeAction;
@@ -21,9 +23,7 @@ public class ActionManager {
         infoAction= new InfoAction();
         newAction= new NewAction();
         changePresentation= new ChangePresentationAction();
-
-//        promenaAutoraPrezentacijeAction= new PromenaAutoraPrezentacijeAction();
-//        promenaPozadinskeSlikePrezentacijeAction= new PromenaPozadinskeSlikePrezentacijeAction();
+        removeAction= new RemoveAction();
     }
 
 }

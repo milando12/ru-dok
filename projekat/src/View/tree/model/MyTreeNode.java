@@ -51,6 +51,16 @@ public class MyTreeNode extends DefaultMutableTreeNode {
         return node.getName();
     }
 
+    public void removeChild(MyTreeNode childNode){
+        if (this.getAllowsChildren() && children.contains(childNode)){
+            children.remove(childNode);
+
+            if (node instanceof RuNodeComposit){
+                ((RuNodeComposit) node).removeChild(childNode.getNode());
+            }
+        }
+    }
+
     //    @Override
 //    public TreeNode getChildAt(int childIndex) {
 //        if(node instanceof RuNodeComposit) ((RuNodeComposit) node).getChildren().get(childIndex);

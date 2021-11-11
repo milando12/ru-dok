@@ -25,10 +25,13 @@ public class MyToolBar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getNewAction());
         addSeparator();
 
-        add(MainFrame.getInstance().getActionManager().getInfoAction());
+        add(MainFrame.getInstance().getActionManager().getRemoveAction());
         addSeparator();
 
         add(MainFrame.getInstance().getActionManager().getChangePresentation());
+        addSeparator();
+
+        add(MainFrame.getInstance().getActionManager().getInfoAction());
 
         setBackground(new Color(135,206,250));
     }

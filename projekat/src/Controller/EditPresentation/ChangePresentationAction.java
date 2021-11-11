@@ -1,5 +1,6 @@
-package Controller;
+package Controller.EditPresentation;
 
+import Controller.AbstractRudokAction;
 import Model.tree.Prezentation;
 import View.EditPresentationDialog;
 import View.MainFrame;
@@ -8,10 +9,10 @@ import com.sun.tools.javac.Main;
 
 import java.awt.event.ActionEvent;
 
-public class ChangePresentationAction extends AbstractRudokAction{
+public class ChangePresentationAction extends AbstractRudokAction {
 
     public ChangePresentationAction(){
-        putValue(SMALL_ICON, loadIcon("slike/write.png"));
+        putValue(SMALL_ICON, loadIcon("write.png"));
         putValue(NAME, "Edit Presentaton");
         putValue(SHORT_DESCRIPTION, "Edit Presentation");
     }

@@ -28,7 +28,7 @@ public class Prezentation extends RuNodeComposit {
                 this.getChildren().add(child);
             }
         }else {
-            //TO-DO:
+            //TODO:
             // mozda treba ovde da ispisem kodrisniku da treba projekat da dodaje
         }
     }
