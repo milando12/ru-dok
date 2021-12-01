@@ -21,6 +21,11 @@ public class MainFrame extends JFrame {
     private MyJTree myJTree;
     private MyModel myModel;
 
+    private JPanel stabloPL;
+    private JPanel radnaPovrsPL;
+    private JScrollPane stabloScP;
+    private JSplitPane stblRadnaSpP;
+
     private MainFrame(){
         actionManager= new ActionManager();
 
@@ -49,16 +54,16 @@ public class MainFrame extends JFrame {
         MyToolBar toolBar= new MyToolBar(this);
         add(toolBar, BorderLayout.NORTH);
 
-        JPanel stabloPL= new JPanel();
-        JPanel radnaPovrsPL= new JPanel();
+        stabloPL= new JPanel();
+        radnaPovrsPL= new JPanel();
 
-        JScrollPane stabloScP= new JScrollPane(myJTree);
+        stabloScP= new JScrollPane(myJTree);
         stabloScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
 
 //        stabloPL.add(stabloScP, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
 //                , JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        JSplitPane stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloScP, radnaPovrsPL);
+        stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloScP, radnaPovrsPL);
 
         add(stblRadnaSpP, BorderLayout.CENTER);
     }
@@ -70,6 +75,10 @@ public class MainFrame extends JFrame {
             instance.initializeGUI();
         }
         return instance;
+    }
+
+    public void showProject(){
+//        stblRadnaSpP.setRightComponent();
     }
 
 }

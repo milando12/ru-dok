@@ -2,9 +2,13 @@ package Model.tree;
 
 import Model.tree.nodes.RuNode;
 import Model.tree.nodes.RuNodeComposit;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class Project extends RuNodeComposit {
 
     public Project(String name, RuNode parent) {

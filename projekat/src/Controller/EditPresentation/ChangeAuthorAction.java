@@ -4,6 +4,7 @@ import Model.tree.Prezentation;
 import View.EditPresentationDialog;
 import View.MainFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ public class ChangeAuthorAction implements ActionListener {
                 instanceof Prezentation){
             ((Prezentation) MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent())
                     .changeAuthor(parent.getAutorTF().getText());
+            SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMyJTree());
         }
     }
 }

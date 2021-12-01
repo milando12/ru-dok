@@ -44,15 +44,15 @@ public class NewAction extends AbstractRudokAction {
                 childTreeNode.setParent(parentTreeNod);
             }else if (parent instanceof Project){
                 String ime= "Prezentacija "+(parentTreeNod.getChildCount()+1);
-                Prezentation project= new Prezentation(ime,parent);
-                MyTreeNode childTreeNode= new MyTreeNode(project);
+                Prezentation prezentation= new Prezentation(ime,parent);
+                MyTreeNode childTreeNode= new MyTreeNode(prezentation);
 
                 parentTreeNod.addChild(childTreeNode);
                 childTreeNode.setParent(parentTreeNod);
             }else if (parent instanceof Prezentation){
                 String ime= "Slajd "+(parentTreeNod.getChildCount()+1);
-                Slide project= new Slide(ime,parent);
-                MyTreeNode childTreeNode= new MyTreeNode(project);
+                Slide slide= new Slide(ime,parent);
+                MyTreeNode childTreeNode= new MyTreeNode(slide);
 
                 parentTreeNod.addChild(childTreeNode);
                 childTreeNode.setParent(parentTreeNod);
