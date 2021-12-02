@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Setter
 public class Prezentation extends RuNodeComposit {
     private String author;
-    private BackgroundImage theme;
+//    private BackgroundImage theme;
 
     public Prezentation(String name, RuNode parent) {
         super(name, parent);
@@ -42,15 +42,25 @@ public class Prezentation extends RuNodeComposit {
         }
     }
 
-    public void changeAuthor(String newAuthor){
+    public void setAuthor(String newAuthor){
         this.author= newAuthor;
         // TODO ovo treba da baci notify
     }
 
-    public void changeBackgroundImage(String img){
-        theme= new BackgroundImage(img);
-        // TODO takodje notify
+    public void changeTheme(String pictureURL){
+        if (pictureURL!= null){
+            for (int i = 0; i < this.getChildren().size(); i++) {
+                Slide slide= (Slide) this.getChildren().get(i);
+                slide.setPictureURL(pictureURL);
+            }
+        }
+        //TODO opali observer da update slideView
     }
+
+//    public void changeBackgroundImage(String img){
+//        theme= new BackgroundImage(img);
+//        // TODO takodje notify
+//    }
 
 
 }

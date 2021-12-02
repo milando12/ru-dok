@@ -57,6 +57,7 @@ public class MainFrame extends JFrame {
         stabloPL= new JPanel();
         radnaPovrsPL= new JPanel();
 
+
         stabloScP= new JScrollPane(myJTree);
         stabloScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
 
@@ -77,8 +78,6 @@ public class MainFrame extends JFrame {
         return instance;
     }
 
-    public void showProject(){
-//        stblRadnaSpP.setRightComponent();
-    }
+
 
 }

@@ -28,7 +28,7 @@ public class ProjectView extends JPanel {
         if (!project.getChildren().isEmpty()){
             for (int i = 0; i < project.getChildren().size(); i++) {
                 Prezentation presentation= (Prezentation) project.getChildren().get(i);
-                presentation.setAuthor("MILAN");
+                if (presentation.getAuthor()== null) presentation.setAuthor("MILAN");// default
 //                System.out.println(presentation.getAuthor());
                 presentationsTP.addTab(presentation.getName(), new PresentationView(presentation));
             }

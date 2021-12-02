@@ -33,6 +33,5 @@ public class MyToolBar extends JToolBar {
 
         add(MainFrame.getInstance().getActionManager().getInfoAction());
 
-        setBackground(new Color(135,206,250));
     }
 }

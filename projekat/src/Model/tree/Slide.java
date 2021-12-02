@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class Slide extends RuNode {
     private int redniBroj;
-    private BackgroundImage backgroundImage;
+    private String pictureURL;
 
     public Slide(String name, RuNode parent) {
         super(name, parent);

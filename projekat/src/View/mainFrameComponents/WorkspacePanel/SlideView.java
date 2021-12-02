@@ -5,15 +5,20 @@ import Model.tree.Slide;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 @Getter
 @Setter
 public class SlideView extends JPanel {
-    private BackgroundImage backgroundImage;
+//    private BackgroundImage backgroundImage;
     private Slide slide;
     private JLabel slideNumLB;
+    private String urlSlike;
 
     public SlideView(Slide slide){
         this.slide= slide;
@@ -22,8 +27,23 @@ public class SlideView extends JPanel {
     }
 
     private void initialiseGUI(){
-        backgroundImage= slide.getBackgroundImage();
+//        backgroundImage= slide.getBackgroundImage();
         slideNumLB= new JLabel(String.valueOf(slide.getRedniBroj()));
+        urlSlike= slide.getPictureURL();
 
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        BufferedImage img = null;
+        try {
+            if(urlSlike == null) {
+                urlSlike = "C:\\Users\\test\\IdeaProjects\\DizajnSoftvera\\rudok-milando12\\projekat\\src\\Controller\\slike\\DefaultBackground.jpg";
+            }
+            img = ImageIO.read(new File(urlSlike));
+        } catch (IOException e) {
+        }
+        g.drawImage(img,0,0,getWidth(),getHeight(),null);
     }
 }

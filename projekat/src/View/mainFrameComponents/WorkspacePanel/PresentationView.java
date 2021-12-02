@@ -29,11 +29,12 @@ public class PresentationView extends JPanel {
     private void initialiseGUI(){
         authorLB= new JLabel(prezentation.getAuthor());
         slidesPNL= new JPanel();
+
         makePNL();
     }
 
     private void makePNL(){
-        slidesPNL.setBackground(new Color(50,100,40));
+        slidesPNL.setBackground(new Color(134,136,138));
         scrollPane= new JScrollPane(slidesPNL, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS
                 , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
