@@ -33,6 +33,7 @@ public class MyTreeNode extends DefaultMutableTreeNode {
             children.add(child);
 
             ((Workspace) node).addChild(child.getNode());
+            //TODO notify
         }else if (node instanceof Project){
             children.add(child);
 

@@ -3,17 +3,19 @@ package View.mainFrameComponents.WorkspacePanel;
 import Model.tree.Prezentation;
 import Model.tree.Project;
 import Model.tree.Slide;
+import Observer.ISubscriber;
+import View.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ProjectView extends JPanel {
+public class ProjectView extends JPanel implements ISubscriber {
     private JLabel projectName;
     private JTabbedPane presentationsTP;
     private Project project;
 
     public ProjectView(Project project){
-        this.project= project;
+        setProject(project);
         initialiseGUI();
         makeArrangement();
     }
@@ -42,55 +44,19 @@ public class ProjectView extends JPanel {
         add(presentationsTP, BorderLayout.CENTER);
     }
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*private JLabel projectName;
-    private JLabel presentationAuthor;
-    private JTabbedPane presentation;
-    private Project project;
-    private JPanel slideView;
-
-    public ProjectView(Project project){
-        this.project= project;
-        projectName.setText(this.project.getName());
-        slideView= new JPanel();
-
+    @Override
+    public void update(Object nortification) {
+        removeAll();
+        setProject((Project) nortification);
         initialiseGUI();
+        makeArrangement();
+        repaint();
+        revalidate();
     }
 
-    private void initialiseGUI(){
-
+    public void setProject(Project project){
+        this.project= project;
+        this.project.addSubscriber(this);
     }
 
-    private void initializeTabbedPane(){
-        presentation= new JTabbedPane(SwingConstants.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
-
-        for (int i = 0; i < project.getChildren().size(); i++) {
-            Prezentation prezentacija= (Prezentation) project.getChildren().get(i);
-            presentation.addTab(prezentacija.getName(), slideView);
-            //TODO napravi prezentacionog autora tj inicijalizuj sta vec
-
-            for (int j = 0; j <prezentacija.getChildren().size() ; j++) {
-                Slide slajd= (Slide) prezentacija.getChildren().get(j);
-                slideView.add(new JPanel());// mzd preko neke metode mozemo da napravimo da se menja
-                                            // tema SlideViewu tako sto prodje kroz sve slajdove i
-                // SVIMA PROMENI POZadinsku sliku a prvi put cemo je setovati
-                // takodje panel mora da ima scrollPane
-            }
-        }
-    }*/
+}

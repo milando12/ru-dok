@@ -30,9 +30,7 @@ public class NewAction extends AbstractRudokAction {
         MyTreeNode parentTreeNod= (MyTreeNode) MainFrame.getInstance()
                 .getMyJTree().getLastSelectedPathComponent();
 
-        MainFrame.getInstance().getMyJTree().expandPath(MainFrame.getInstance()
-                   .getMyJTree().getSelectionPath());
-
+        MainFrame.getInstance().getMyJTree().expandPath(MainFrame.getInstance().getMyJTree().getSelectionPath());
         if (parentTreeNod!=null){
             RuNode parent= parentTreeNod.getNode();
             if (parent instanceof Workspace){

@@ -3,6 +3,7 @@ package View.mainFrameComponents.WorkspacePanel;
 import Model.BackgroundImage;
 import Model.tree.Prezentation;
 import Model.tree.Slide;
+import Observer.ISubscriber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,14 +15,14 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PresentationView extends JPanel {
+public class PresentationView extends JPanel implements ISubscriber {
     private JLabel authorLB;
     private JPanel slidesPNL;
     private Prezentation prezentation;
     private JScrollPane scrollPane;
 
     public PresentationView(Prezentation prezentation){
-        this.prezentation= prezentation;
+        setPrezentation(prezentation);
         initialiseGUI();
         makeArrangements();
     }
@@ -37,7 +38,6 @@ public class PresentationView extends JPanel {
         slidesPNL.setBackground(new Color(134,136,138));
         scrollPane= new JScrollPane(slidesPNL, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS
                 , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
         if (!prezentation.getChildren().isEmpty()){
             slidesPNL.setLayout(new GridLayout(prezentation.getChildren().size(),0, 0,20));
             for (int i = 0; i < prezentation.getChildren().size(); i++) {
@@ -53,5 +53,18 @@ public class PresentationView extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
 
+    public void setPrezentation(Prezentation prezentation){
+        this.prezentation= prezentation;
+        this.prezentation.addSubscriber(this);
+    }
 
+    @Override
+    public void update(Object nortification) {
+        removeAll();
+        setPrezentation((Prezentation) nortification);
+        initialiseGUI();
+        makeArrangements();
+        repaint();
+        revalidate();
+    }
 }

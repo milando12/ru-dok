@@ -4,6 +4,7 @@ import Model.tree.Prezentation;
 import Model.tree.Project;
 import Model.tree.Slide;
 import Model.tree.Workspace;
+import View.MainFrame;
 import View.tree.model.MyTreeNode;
 
 import javax.swing.*;
@@ -45,7 +46,15 @@ public class MyTreeCellEditor extends DefaultTreeCellEditor implements ActionLis
 //            ((Workspace)component).setName(e.getActionCommand());
 //        }
         if (component instanceof MyTreeNode){
+//            System.out.println(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()
+//            ).getNode().getName());
+            if (((MyTreeNode)component).getNode() instanceof Project) ((Project) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
+            else if (((MyTreeNode)component).getNode() instanceof Prezentation)
+                ((Prezentation) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
+            else
             ((MyTreeNode)component).getNode().setName(e.getActionCommand());
+//            System.out.println(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()
+//                    ).getNode().getName());
         }
     }
 

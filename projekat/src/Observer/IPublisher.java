@@ -3,5 +3,5 @@ package Observer;
 public interface IPublisher {
     void addSubscriber(ISubscriber subscriber);
     void removeSubsriber(ISubscriber subscriber);
-    void notifySubscribers(Object nortification);
+    void notifySubscribers(Object notification);
 }
