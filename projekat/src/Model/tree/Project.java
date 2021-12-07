@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Project extends RuNodeComposit implements IPublisher {
-    private List<ISubscriber> subscribers;
+//    private List<ISubscriber> subscribers;
 
     public Project(String name, RuNode parent) {
         super(name, parent);
@@ -26,9 +26,6 @@ public class Project extends RuNodeComposit implements IPublisher {
                 this.setChildren(new ArrayList<>());
             }
             this.getChildren().add(child);
-        }else {
-            //TODO:
-            // mozda treba ovde da ispisem kodrisniku da treba projekat da dodaje
         }
         notifySubscribers(this);
     }
@@ -49,27 +46,27 @@ public class Project extends RuNodeComposit implements IPublisher {
     }
 
 
-    @Override
-    public void addSubscriber(ISubscriber subscriber) {
-        if (subscribers==null) subscribers= new ArrayList<>();
-        else if (subscriber== null || subscribers.contains(subscriber)) return;
-        subscribers.add(subscriber);
-    }
-
-    @Override
-    public void removeSubsriber(ISubscriber subscriber) {
-        if (subscribers== null || subscriber==null|| !subscribers.contains(subscriber)) return;
-        subscribers.remove(subscriber);
-    }
-
-    @Override
-    public void notifySubscribers(Object notification) {
-        if(notification == null || this.subscribers == null || this.subscribers.isEmpty()) return;
-
-        for (ISubscriber listener: subscribers) {
-
-            listener.update(notification);
-        }
-    }
+//    @Override
+//    public void addSubscriber(ISubscriber subscriber) {
+//        if (subscribers==null) subscribers= new ArrayList<>();
+//        else if (subscriber== null || subscribers.contains(subscriber)) return;
+//        subscribers.add(subscriber);
+//    }
+//
+//    @Override
+//    public void removeSubsriber(ISubscriber subscriber) {
+//        if (subscribers== null || subscriber==null|| !subscribers.contains(subscriber)) return;
+//        subscribers.remove(subscriber);
+//    }
+//
+//    @Override
+//    public void notifySubscribers(Object notification) {
+//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty()) return;
+//
+//        for (ISubscriber listener: subscribers) {
+//
+//            listener.update(notification);
+//        }
+//    }
 
 }

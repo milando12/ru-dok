@@ -1,16 +1,47 @@
 package Model.tree.nodes;
 
+import Observer.IPublisher;
+import Observer.ISubscriber;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
-public abstract class RuNode {
+public abstract class RuNode implements IPublisher {
     private String name;
     private RuNode parent;
+    private List<ISubscriber> subscribers;
+
 
     public RuNode(String name, RuNode parent) {
         this.name = name;
         this.parent = parent;
     }
+
+    @Override
+    public void addSubscriber(ISubscriber subscriber) {
+        if (subscribers==null) subscribers= new ArrayList<>();
+        else if (subscriber== null || subscribers.contains(subscriber)) return;
+        subscribers.add(subscriber);
+    }
+
+    @Override
+    public void removeSubsriber(ISubscriber subscriber) {
+        if (subscribers== null || subscriber==null|| !subscribers.contains(subscriber)) return;
+        subscribers.remove(subscriber);
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+        if(notification == null || this.subscribers == null || this.subscribers.isEmpty()) return;
+
+        for (ISubscriber listener: subscribers) {
+
+            listener.update(notification);
+        }
+    }
+
 }
