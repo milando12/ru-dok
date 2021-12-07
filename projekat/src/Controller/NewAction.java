@@ -10,6 +10,7 @@ import Model.tree.nodes.RuNodeComposit;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
 import View.tree.view.MyJTree;
+import Error.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -55,10 +56,12 @@ public class NewAction extends AbstractRudokAction {
                 parentTreeNod.addChild(childTreeNode);
                 childTreeNode.setParent(parentTreeNod);
             }else {
-                //TODO ne moze da doda u slajd
+                ErrorFactory.getInstance().generateError("Ne postoji stuktura niza od slajda"
+                        , 2, "Upozorenje");
             }
         }else {
-            //TODO selektuj nesto
+            ErrorFactory.getInstance().generateError("Selektuj neki cvor"
+                    , 1, "");
         }
         SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMyJTree());
         MainFrame.getInstance().getMyJTree().expandPath(MainFrame.getInstance()

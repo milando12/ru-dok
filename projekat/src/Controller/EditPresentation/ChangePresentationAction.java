@@ -5,6 +5,7 @@ import Model.tree.Prezentation;
 import View.EditPresentationDialog;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
+import Error.*;
 import com.sun.tools.javac.Main;
 
 import java.awt.event.ActionEvent;
@@ -26,7 +27,8 @@ public class ChangePresentationAction extends AbstractRudokAction {
                         (MainFrame.getInstance());
                 editPresentationDialog.setVisible(true);
             }else {
-                //TODO error mora da bude selektovana prezentacija da bi editovao
+                ErrorFactory.getInstance().generateError("Ovo dugme sluzi samo za edit prezentacije."
+                        , 1, "Informacija");
             }
         }
     }

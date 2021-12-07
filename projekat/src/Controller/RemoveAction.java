@@ -6,6 +6,7 @@ import Model.tree.nodes.RuNode;
 import Model.tree.nodes.RuNodeComposit;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
+import Error.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +35,8 @@ public class RemoveAction extends AbstractRudokAction{
 
             if (ruNode instanceof Project) MainFrame.getInstance().getStblRadnaSpP().setRightComponent(new JPanel());
         }else {
-            //TODO selektuj cvor koji brises, tj bar neki cvor
+            ErrorFactory.getInstance().generateError("Slektuj cvor koji nije RadnaPovrsina"
+            , 2, "Ne moze se brisati Radna Povrsina");
         }
     }
 }

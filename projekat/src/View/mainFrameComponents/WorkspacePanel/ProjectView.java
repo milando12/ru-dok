@@ -3,6 +3,7 @@ package View.mainFrameComponents.WorkspacePanel;
 import Model.tree.Prezentation;
 import Model.tree.Project;
 import Model.tree.Slide;
+import Model.tree.nodes.RuNode;
 import Observer.ISubscriber;
 import View.MainFrame;
 
@@ -47,7 +48,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     @Override
     public void update(Object nortification) {
         removeAll();
-        setProject((Project) nortification);
+        if (nortification instanceof Project && nortification!=null) setProject((Project) nortification);
         initialiseGUI();
         makeArrangement();
         repaint();

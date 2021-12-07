@@ -1,10 +1,13 @@
 package View;
 
 import Controller.ActionManager;
+import Observer.ISubscriber;
 import View.mainFrameComponents.MyMenuBar;
 import View.mainFrameComponents.MyToolBar;
 import View.tree.model.MyModel;
 import View.tree.view.MyJTree;
+import Error.MyError;
+import Error.ErrorFactory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +16,7 @@ import java.awt.*;
 
 @Getter
 @Setter
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ISubscriber {
 
     private static MainFrame instance= null;
 
@@ -26,9 +29,16 @@ public class MainFrame extends JFrame {
     private JScrollPane stabloScP;
     private JSplitPane stblRadnaSpP;
 
+    private ErrorFactory errorFactory;
+
     private MainFrame(){
         actionManager= new ActionManager();
+        setErrorFactory();
+    }
 
+    private void setErrorFactory(){
+        this.errorFactory= ErrorFactory.getInstance();
+        this.errorFactory.addSubscriber(this);
     }
 
     private void initialiseTree(){
@@ -67,6 +77,14 @@ public class MainFrame extends JFrame {
         stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloScP, radnaPovrsPL);
 
         add(stblRadnaSpP, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void update(Object nortification) {
+        if (nortification instanceof MyError){
+            JOptionPane.showMessageDialog(this , ((MyError)nortification).getMessage()
+            ,((MyError)nortification).getTitle(), ((MyError)nortification).getType());
+        }
     }
 
     public static MainFrame getInstance(){

@@ -6,6 +6,7 @@ import Model.tree.Slide;
 import Model.tree.Workspace;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
+import Error.*;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -36,26 +37,16 @@ public class MyTreeCellEditor extends DefaultTreeCellEditor implements ActionLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        if ( component instanceof Project){
-//            ((Project)component).setName(e.getActionCommand());
-//        }else if ( component instanceof Prezentation){
-//            ((Prezentation)component).setName(e.getActionCommand());
-//        }else if (component instanceof Slide){
-//            ((Slide)component).setName(e.getActionCommand());
-//        }else if ( component instanceof Workspace){
-//            ((Workspace)component).setName(e.getActionCommand());
-//        }
-        if (component instanceof MyTreeNode){
-//            System.out.println(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()
-//            ).getNode().getName());
-            if (((MyTreeNode)component).getNode() instanceof Project) ((Project) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
+
+        if (component instanceof MyTreeNode && e.getActionCommand().toString().length()>0){
+            if (((MyTreeNode)component).getNode() instanceof Project)
+                ((Project)((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
             else if (((MyTreeNode)component).getNode() instanceof Prezentation)
                 ((Prezentation) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
             else
             ((MyTreeNode)component).getNode().setName(e.getActionCommand());
-//            System.out.println(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()
-//                    ).getNode().getName());
-        }
+        }else ErrorFactory.getInstance().generateError("Ne mozete ostaviti prazno ime cvora"
+        , 2, "Upozorenje");
     }
 
     @Override

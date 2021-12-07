@@ -29,9 +29,6 @@ public class Prezentation extends RuNodeComposit implements IPublisher {
                 this.setChildren(new ArrayList<>());
             }
             this.getChildren().add(child);
-        }else {
-            //TODO:
-            // mozda treba ovde da ispisem kodrisniku da treba projekat da dodaje
         }
         notifySubscribers(this);
     }
@@ -64,7 +61,7 @@ public class Prezentation extends RuNodeComposit implements IPublisher {
 
     public void changeName(String name){
         this.setName(name);
-        notifySubscribers(this);
+        ((Project)this.getParent()).notifySubscribers(this);
     }
 
     @Override
