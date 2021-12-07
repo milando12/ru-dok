@@ -11,16 +11,6 @@ public class MyToolBar extends JToolBar {
         super(SwingConstants.HORIZONTAL);
 
         setPreferredSize(new Dimension(50,40));
-//        JButton newBT= new JButton(MainFrame.getInstance().getActionManager().getNewAction());
-//        newBT.setToolTipText("New");
-//
-//        add(newBT);
-//        addSeparator();
-//
-//        JButton infoBT= new JButton("Info");
-//        infoBT.setToolTipText("Info");
-//
-//        add(infoBT);
 
         add(MainFrame.getInstance().getActionManager().getNewAction());
         addSeparator();

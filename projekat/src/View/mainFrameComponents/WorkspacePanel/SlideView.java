@@ -15,19 +15,17 @@ import java.io.IOException;
 @Getter
 @Setter
 public class SlideView extends JPanel {
-//    private BackgroundImage backgroundImage;
     private Slide slide;
     private JLabel slideNumLB;
     private String urlSlike;
 
-    public SlideView(Slide slide){
+    public SlideView(Slide slide, int prefHeight){
         this.slide= slide;
         initialiseGUI();
-        setPreferredSize(new Dimension(50,150));
+        setPreferredSize(new Dimension(50,prefHeight));
     }
 
     private void initialiseGUI(){
-//        backgroundImage= slide.getBackgroundImage();
         slideNumLB= new JLabel(String.valueOf(slide.getRedniBroj()));
         urlSlike= slide.getPictureURL();
 

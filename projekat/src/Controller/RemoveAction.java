@@ -9,7 +9,6 @@ import View.tree.model.MyTreeNode;
 import Error.ErrorFactory;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -33,7 +32,7 @@ public class RemoveAction extends AbstractRudokAction{
 
             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMyJTree());
 
-            if (ruNode instanceof Project) MainFrame.getInstance().getStblRadnaSpP().setRightComponent(new JPanel());
+            if (ruNode instanceof Project) MainFrame.getInstance().getTreeRadnaSpP().setRightComponent(new JPanel());
         }else {
             ErrorFactory.getInstance().generateError("Slektuj cvor koji nije RadnaPovrsina"
             , 2, "Ne moze se brisati Radna Povrsina");

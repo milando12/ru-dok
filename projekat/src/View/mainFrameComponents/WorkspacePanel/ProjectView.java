@@ -32,7 +32,6 @@ public class ProjectView extends JPanel implements ISubscriber {
             for (int i = 0; i < project.getChildren().size(); i++) {
                 Prezentation presentation= (Prezentation) project.getChildren().get(i);
                 if (presentation.getAuthor()== null) presentation.setAuthor("MILAN");// default
-//                System.out.println(presentation.getAuthor());
                 presentationsTP.addTab(presentation.getName(), new PresentationView(presentation));
             }
 

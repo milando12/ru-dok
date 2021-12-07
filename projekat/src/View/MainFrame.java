@@ -26,8 +26,8 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private JPanel stabloPL;
     private JPanel radnaPovrsPL;
-    private JScrollPane stabloScP;
-    private JSplitPane stblRadnaSpP;
+    private JScrollPane treeScP;
+    private JSplitPane treeRadnaSpP;
 
     private ErrorFactory errorFactory;
 
@@ -67,16 +67,12 @@ public class MainFrame extends JFrame implements ISubscriber {
         stabloPL= new JPanel();
         radnaPovrsPL= new JPanel();
 
+        treeScP = new JScrollPane(myJTree);
+        treeScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
 
-        stabloScP= new JScrollPane(myJTree);
-        stabloScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
+        treeRadnaSpP = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScP, radnaPovrsPL);
 
-//        stabloPL.add(stabloScP, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
-//                , JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        stblRadnaSpP= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stabloScP, radnaPovrsPL);
-
-        add(stblRadnaSpP, BorderLayout.CENTER);
+        add(treeRadnaSpP, BorderLayout.CENTER);
     }
 
     @Override

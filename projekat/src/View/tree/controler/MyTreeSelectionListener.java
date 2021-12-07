@@ -1,7 +1,5 @@
 package View.tree.controler;
 
-import Controller.ActionManager;
-import Model.tree.Prezentation;
 import Model.tree.Project;
 import View.MainFrame;
 import View.mainFrameComponents.WorkspacePanel.ProjectView;
@@ -17,7 +15,7 @@ public class MyTreeSelectionListener implements TreeSelectionListener{
         MyTreeNode treeNode= (MyTreeNode) MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent();
         if (treeNode.getNode() instanceof Project){
             Project project= (Project) treeNode.getNode();
-            MainFrame.getInstance().getStblRadnaSpP().setRightComponent(new ProjectView(project));
+            MainFrame.getInstance().getTreeRadnaSpP().setRightComponent(new ProjectView(project));
         }/*else if (treeNode.getNode() instanceof Prezentation){
             System.out.println(((Prezentation)treeNode.getNode()).getAuthor());
         }*/
