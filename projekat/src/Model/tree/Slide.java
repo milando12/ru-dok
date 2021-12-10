@@ -11,7 +11,8 @@ public class Slide extends RuNode {
     private int redniBroj;
     private String pictureURL;
 
-    public Slide(String name, RuNode parent) {
+    public Slide(String name, RuNode parent, int redniBroj) {
         super(name, parent);
+        this.redniBroj= redniBroj;
     }
 }

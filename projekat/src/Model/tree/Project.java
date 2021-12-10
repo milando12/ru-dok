@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Project extends RuNodeComposit implements IPublisher {
-//    private List<ISubscriber> subscribers;
 
     public Project(String name, RuNode parent) {
         super(name, parent);
@@ -44,29 +43,5 @@ public class Project extends RuNodeComposit implements IPublisher {
         this.setName(name);
         notifySubscribers(this);
     }
-
-
-//    @Override
-//    public void addSubscriber(ISubscriber subscriber) {
-//        if (subscribers==null) subscribers= new ArrayList<>();
-//        else if (subscriber== null || subscribers.contains(subscriber)) return;
-//        subscribers.add(subscriber);
-//    }
-//
-//    @Override
-//    public void removeSubsriber(ISubscriber subscriber) {
-//        if (subscribers== null || subscriber==null|| !subscribers.contains(subscriber)) return;
-//        subscribers.remove(subscriber);
-//    }
-//
-//    @Override
-//    public void notifySubscribers(Object notification) {
-//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty()) return;
-//
-//        for (ISubscriber listener: subscribers) {
-//
-//            listener.update(notification);
-//        }
-//    }
 
 }

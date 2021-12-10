@@ -92,6 +92,16 @@ public class MainFrame extends JFrame implements ISubscriber {
         return instance;
     }
 
+    public int height(){
+        Toolkit toolkit= Toolkit.getDefaultToolkit();
+        Dimension dimension= toolkit.getScreenSize();
+        return dimension.height;
+    }
+    public int width(){
+        Toolkit toolkit= Toolkit.getDefaultToolkit();
+        Dimension dimension= toolkit.getScreenSize();
+        return dimension.width;
+    }
 
 
 }

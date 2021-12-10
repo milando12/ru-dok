@@ -50,7 +50,7 @@ public class NewAction extends AbstractRudokAction {
                 childTreeNode.setParent(parentTreeNod);
             }else if (parent instanceof Prezentation){
                 String ime= "Slajd "+(parentTreeNod.getChildCount()+1);
-                Slide slide= new Slide(ime,parent);
+                Slide slide= new Slide(ime,parent, parentTreeNod.getChildCount()+1);
                 MyTreeNode childTreeNode= new MyTreeNode(slide);
 
                 parentTreeNod.addChild(childTreeNode);

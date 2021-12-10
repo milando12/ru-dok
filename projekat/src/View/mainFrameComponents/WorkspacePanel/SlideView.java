@@ -1,6 +1,5 @@
 package View.mainFrameComponents.WorkspacePanel;
 
-import Model.BackgroundImage;
 import Model.tree.Slide;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +22,11 @@ public class SlideView extends JPanel {
         this.slide= slide;
         initialiseGUI();
         setPreferredSize(new Dimension(50,prefHeight));
+    }
+    public SlideView(Slide slide){
+        this.slide= slide;
+        initialiseGUI();
+        add(slideNumLB);
     }
 
     private void initialiseGUI(){

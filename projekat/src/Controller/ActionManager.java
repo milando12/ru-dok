@@ -12,6 +12,7 @@ public class ActionManager {
     private ChangePresentationAction changePresentation;
     private RemoveAction removeAction;
 
+
 //    private PromenaAutoraPrezentacijeAction promenaAutoraPrezentacijeAction;
 //    private PromenaPozadinskeSlikePrezentacijeAction promenaPozadinskeSlikePrezentacijeAction;
 
