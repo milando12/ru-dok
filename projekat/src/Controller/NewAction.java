@@ -28,33 +28,33 @@ public class NewAction extends AbstractRudokAction {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        MyTreeNode parentTreeNod= (MyTreeNode) MainFrame.getInstance()
+        MyTreeNode selectedTreeNode= (MyTreeNode) MainFrame.getInstance()
                 .getMyJTree().getLastSelectedPathComponent();
 
         MainFrame.getInstance().getMyJTree().expandPath(MainFrame.getInstance().getMyJTree().getSelectionPath());
-        if (parentTreeNod!=null){
-            RuNode parent= parentTreeNod.getNode();
+        if (selectedTreeNode!=null){
+            RuNode parent= selectedTreeNode.getNode();
             if (parent instanceof Workspace){
-                String ime= "Projekat "+(parentTreeNod.getChildCount()+1);
+                String ime= "Projekat "+(selectedTreeNode.getChildCount()+1);
                 Project project= new Project(ime,parent);
                 MyTreeNode childTreeNode= new MyTreeNode(project);
 
-                parentTreeNod.addChild(childTreeNode);
-                childTreeNode.setParent(parentTreeNod);
+                selectedTreeNode.addChild(childTreeNode);
+                childTreeNode.setParent(selectedTreeNode);
             }else if (parent instanceof Project){
-                String ime= "Prezentacija "+(parentTreeNod.getChildCount()+1);
+                String ime= "Prezentacija "+(selectedTreeNode.getChildCount()+1);
                 Prezentation prezentation= new Prezentation(ime,parent);
                 MyTreeNode childTreeNode= new MyTreeNode(prezentation);
 
-                parentTreeNod.addChild(childTreeNode);
-                childTreeNode.setParent(parentTreeNod);
+                selectedTreeNode.addChild(childTreeNode);
+                childTreeNode.setParent(selectedTreeNode);
             }else if (parent instanceof Prezentation){
-                String ime= "Slajd "+(parentTreeNod.getChildCount()+1);
-                Slide slide= new Slide(ime,parent, parentTreeNod.getChildCount()+1);
+                String ime= "Slajd "+(selectedTreeNode.getChildCount()+1);
+                Slide slide= new Slide(ime,parent, selectedTreeNode.getChildCount()+1);
                 MyTreeNode childTreeNode= new MyTreeNode(slide);
 
-                parentTreeNod.addChild(childTreeNode);
-                childTreeNode.setParent(parentTreeNod);
+                selectedTreeNode.addChild(childTreeNode);
+                childTreeNode.setParent(selectedTreeNode);
             }else {
                 ErrorFactory.getInstance().generateError("Ne postoji stuktura niza od slajda"
                         , 2, "Upozorenje");

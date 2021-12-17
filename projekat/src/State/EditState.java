@@ -5,10 +5,14 @@ import Model.tree.Slide;
 import View.MainFrame;
 import View.mainFrameComponents.WorkspacePanel.PresentationView;
 import View.mainFrameComponents.WorkspacePanel.SlideView;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Setter
+@Getter
 public class EditState implements State{
     private JLabel authorLB;
 
@@ -24,12 +28,35 @@ public class EditState implements State{
     private JPanel presentationToolbar;
 
     private JButton slideShowBT;
+    private JButton addSlotStateBT;
+    private JButton deleteSlotStateBT;
+    private JButton selectSlotStateBT;
+    private JButton moveSlotStateBT;
+    private JButton colorBT;
 
     private PresentationView presentationView;
 
 
     private void initialiseGUI(){
         slideShowBT= new JButton();
+        selectSlotStateBT= new JButton();
+        selectSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/selection.png"));
+        moveSlotStateBT= new JButton();
+        moveSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/move.png"));
+        colorBT= new JButton();
+        colorBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/color-palette.png"));
+        addSlotStateBT= new JButton();
+        addSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/more.png"));
+        addSlotStateBT.setToolTipText("add Slot");
+        deleteSlotStateBT= new JButton();
+        deleteSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/eraser.png"));
+        deleteSlotStateBT.setToolTipText("delete Slot");
+
         authorLB= new JLabel(prezentation.getAuthor());
         slidesPNL= new JPanel();
         previewPNL= new JPanel();
@@ -40,11 +67,23 @@ public class EditState implements State{
 
         makeSlidesPNL();
         makeSlideShowButton();
+        initActions();
+    }
+
+    private void initActions(){
+        addSlotStateBT.addActionListener(e -> presentationView.startAddSlotState());
+
+        deleteSlotStateBT.addActionListener(e -> presentationView.startDeleteSlotState());
+        colorBT.addActionListener(e -> MainFrame.getInstance().setSlotColor(JColorChooser.showDialog(MainFrame.getInstance()
+                , "Izaberite boju Slota"
+                , Color.CYAN)));
+        selectSlotStateBT.addActionListener(e -> presentationView.startSelectSlotState());
+        moveSlotStateBT.addActionListener(e -> presentationView.startMoveSlotState());
     }
 
     private void makeSlideShowButton(){
-        slideShowBT.setIcon(new ImageIcon("C:\\Users\\test\\IdeaProjects" +
-                "\\DizajnSoftvera\\rudok-milando12\\projekat\\src\\Controller\\slike\\slideshow.png"));
+        slideShowBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/slideshow.png"));
         slideShowBT.addActionListener(e -> presentationView.startSlideShowState());
     }
 
@@ -73,6 +112,11 @@ public class EditState implements State{
 
     private void makeArrangements(){
         presentationToolbar.add(slideShowBT, Component.LEFT_ALIGNMENT);
+        presentationToolbar.add(addSlotStateBT);
+        presentationToolbar.add(deleteSlotStateBT);
+        presentationToolbar.add(colorBT);
+        presentationToolbar.add(selectSlotStateBT);
+        presentationToolbar.add(moveSlotStateBT);
 
         presentationView.setLayout(new BorderLayout());
         presentationView.add(presentationToolbar, BorderLayout.NORTH);

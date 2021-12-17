@@ -1,5 +1,8 @@
 package State;
 
+import State.EditStates.AddSlotState;
+import State.EditStates.DeleteSlotState;
+
 public class StateManager {
     private State currentState;
     private EditState editState;

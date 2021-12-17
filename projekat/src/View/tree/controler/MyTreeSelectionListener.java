@@ -11,13 +11,10 @@ import javax.swing.event.TreeSelectionListener;
 public class MyTreeSelectionListener implements TreeSelectionListener{
     @Override
     public void valueChanged(TreeSelectionEvent e) {
-//        System.out.println(MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent());
         MyTreeNode treeNode= (MyTreeNode) MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent();
         if (treeNode.getNode() instanceof Project){
             Project project= (Project) treeNode.getNode();
             MainFrame.getInstance().getTreeRadnaSpP().setRightComponent(new ProjectView(project));
-        }/*else if (treeNode.getNode() instanceof Prezentation){
-            System.out.println(((Prezentation)treeNode.getNode()).getAuthor());
-        }*/
+        }
     }
 }

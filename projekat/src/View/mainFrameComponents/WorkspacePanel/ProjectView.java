@@ -6,10 +6,14 @@ import Model.tree.Slide;
 import Model.tree.nodes.RuNode;
 import Observer.ISubscriber;
 import View.MainFrame;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Setter
+@Getter
 public class ProjectView extends JPanel implements ISubscriber {
     private JLabel projectName;
     private JTabbedPane presentationsTP;
