@@ -31,8 +31,6 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private ErrorFactory errorFactory;
 
-    private Color slotColor;
-
     private MainFrame(){
         actionManager= new ActionManager();
         setErrorFactory();
@@ -73,8 +71,6 @@ public class MainFrame extends JFrame implements ISubscriber {
         treeScP.setPreferredSize(new Dimension((int)dimension.getWidth()/8,9));
 
         treeRadnaSpP = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScP, radnaPovrsPL);
-
-        slotColor= Color.CYAN;
 
         add(treeRadnaSpP, BorderLayout.CENTER);
     }

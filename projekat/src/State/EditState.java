@@ -74,7 +74,8 @@ public class EditState implements State{
         addSlotStateBT.addActionListener(e -> presentationView.startAddSlotState());
 
         deleteSlotStateBT.addActionListener(e -> presentationView.startDeleteSlotState());
-        colorBT.addActionListener(e -> MainFrame.getInstance().setSlotColor(JColorChooser.showDialog(MainFrame.getInstance()
+        colorBT.addActionListener(e -> presentationView.getEditStateStateManager().getAddSlotState()
+                .setC(JColorChooser.showDialog(MainFrame.getInstance()
                 , "Izaberite boju Slota"
                 , Color.CYAN)));
         selectSlotStateBT.addActionListener(e -> presentationView.startSelectSlotState());

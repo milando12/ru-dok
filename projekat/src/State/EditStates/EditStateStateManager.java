@@ -1,7 +1,11 @@
 package State.EditStates;
 
 import State.State;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class EditStateStateManager {
     private SlotState currentState;
     private AddSlotState addSlotState;
