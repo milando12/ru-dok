@@ -33,6 +33,8 @@ public class EditState implements State{
     private JButton selectSlotStateBT;
     private JButton moveSlotStateBT;
     private JButton colorBT;
+    private JButton abruptnessBT;
+    private JButton strokeWidthBT;
 
     private PresentationView presentationView;
 
@@ -56,6 +58,8 @@ public class EditState implements State{
         deleteSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
                 "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/eraser.png"));
         deleteSlotStateBT.setToolTipText("delete Slot");
+        abruptnessBT= new JButton("A");
+        strokeWidthBT= new JButton("S");
 
         authorLB= new JLabel(prezentation.getAuthor());
         slidesPNL= new JPanel();
@@ -80,6 +84,18 @@ public class EditState implements State{
                 , Color.CYAN)));
         selectSlotStateBT.addActionListener(e -> presentationView.startSelectSlotState());
         moveSlotStateBT.addActionListener(e -> presentationView.startMoveSlotState());
+        abruptnessBT.addActionListener(e -> {
+            int i= JOptionPane.showConfirmDialog(presentationView
+                            ,"Da li zelite da promenite isprekidanost okvira Slota?");
+            if (i==0) {
+                presentationView.getEditStateStateManager().getAddSlotState().changeAbruptness();
+            }
+        });
+        strokeWidthBT.addActionListener(e -> {
+            presentationView.getEditStateStateManager().getAddSlotState()
+                    .setStrokeWidth(Float.parseFloat(JOptionPane.showInputDialog(presentationView
+                            , "Unesite debljinu okvira Slota")));
+        });
     }
 
     private void makeSlideShowButton(){
@@ -116,6 +132,8 @@ public class EditState implements State{
         presentationToolbar.add(addSlotStateBT);
         presentationToolbar.add(deleteSlotStateBT);
         presentationToolbar.add(colorBT);
+        presentationToolbar.add(abruptnessBT);
+        presentationToolbar.add(strokeWidthBT);
         presentationToolbar.add(selectSlotStateBT);
         presentationToolbar.add(moveSlotStateBT);
 

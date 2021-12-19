@@ -4,7 +4,6 @@ import Model.Slot;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.swing.*;
 import java.awt.*;
 
 @Getter
@@ -12,8 +11,7 @@ import java.awt.*;
 public class SlotView {
     private Slot slot;
     private Shape shape;
-
-
+    
     public SlotView(Slot slot){
         this.slot= slot;
         shape= new Rectangle((int) slot.getPoint().getX(), (int)slot.getPoint().getY()
@@ -40,6 +38,4 @@ public class SlotView {
     public void setLocation(Point point){
 
     }
-
-
 }

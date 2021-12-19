@@ -1,5 +1,6 @@
 import View.MainFrame;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Main {

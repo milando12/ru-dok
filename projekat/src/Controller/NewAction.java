@@ -1,17 +1,11 @@
 package Controller;
 
-import Controller.AbstractRudokAction;
 import Factory.FactoryGenerator;
 import Factory.NodeFactories.NodeFactory;
-import Model.tree.Prezentation;
-import Model.tree.Project;
 import Model.tree.Slide;
-import Model.tree.Workspace;
 import Model.tree.nodes.RuNode;
-import Model.tree.nodes.RuNodeComposit;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
-import View.tree.view.MyJTree;
 import Error.*;
 
 import javax.swing.*;
