@@ -11,10 +11,9 @@ public class ActionManager {
     private NewAction newAction;
     private ChangePresentationAction changePresentation;
     private RemoveAction removeAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
 
-
-//    private PromenaAutoraPrezentacijeAction promenaAutoraPrezentacijeAction;
-//    private PromenaPozadinskeSlikePrezentacijeAction promenaPozadinskeSlikePrezentacijeAction;
 
     public ActionManager() {
         initialiseActions();
@@ -25,6 +24,8 @@ public class ActionManager {
         newAction= new NewAction();
         changePresentation= new ChangePresentationAction();
         removeAction= new RemoveAction();
+        undoAction= new UndoAction();
+        redoAction= new RedoAction();
     }
 
 }

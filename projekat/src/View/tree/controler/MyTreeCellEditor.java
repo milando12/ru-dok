@@ -1,5 +1,6 @@
 package View.tree.controler;
 
+import Command.RenameCommand;
 import Model.tree.Prezentation;
 import Model.tree.Project;
 import Model.tree.Slide;
@@ -39,12 +40,17 @@ public class MyTreeCellEditor extends DefaultTreeCellEditor implements ActionLis
     public void actionPerformed(ActionEvent e) {
 
         if (component instanceof MyTreeNode && e.getActionCommand().toString().length()>0){
-            if (((MyTreeNode)component).getNode() instanceof Project)
-                ((Project)((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
-            else if (((MyTreeNode)component).getNode() instanceof Prezentation)
-                ((Prezentation) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
-            else
-            ((MyTreeNode)component).getNode().setName(e.getActionCommand());
+//            if (((MyTreeNode)component).getNode() instanceof Project)
+//                ((Project)((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
+//            else if (((MyTreeNode)component).getNode() instanceof Prezentation)
+//                ((Prezentation) ((MyTreeNode)component).getNode()).changeName(e.getActionCommand());
+//            else
+//            ((MyTreeNode)component).getNode().changeName(e.getActionCommand());
+
+            MainFrame.getInstance().getCommandManager()
+                    .addCommand(new RenameCommand(e.getActionCommand()
+                            , ((MyTreeNode)component).getNode()));
+
         }else ErrorFactory.getInstance().generateError("Ne mozete ostaviti prazno ime cvora"
         , 2, "Upozorenje");
     }

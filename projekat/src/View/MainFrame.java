@@ -1,5 +1,6 @@
 package View;
 
+import Command.CommandManager;
 import Controller.ActionManager;
 import Observer.ISubscriber;
 import View.mainFrameComponents.MyMenuBar;
@@ -20,6 +21,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private static MainFrame instance= null;
 
+    private CommandManager commandManager;
     private ActionManager actionManager;
     private MyJTree myJTree;
     private MyModel myModel;
@@ -33,6 +35,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private MainFrame(){
         actionManager= new ActionManager();
+        commandManager= new CommandManager();
         setErrorFactory();
     }
 

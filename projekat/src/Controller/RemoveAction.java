@@ -1,5 +1,6 @@
 package Controller;
 
+import Command.RemoveCommand;
 import Model.tree.Project;
 import Model.tree.Workspace;
 import Model.tree.nodes.RuNode;
@@ -23,16 +24,14 @@ public class RemoveAction extends AbstractRudokAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()instanceof MyTreeNode
-                && !(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent()).getNode()
-                instanceof Workspace)){
+                && !(((MyTreeNode)MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent())
+                .getNode() instanceof Workspace)){
             MyTreeNode selectedNode= (MyTreeNode) MainFrame.getInstance().getMyJTree().getLastSelectedPathComponent();
             RuNode ruNode= selectedNode.getNode();
-            ((MyTreeNode)selectedNode.getParent()).removeChild(selectedNode);
-            ((RuNodeComposit)ruNode.getParent()).removeChild(ruNode);
 
-            SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMyJTree());
+            MainFrame.getInstance().getCommandManager()
+                    .addCommand(new RemoveCommand(selectedNode, ruNode));
 
-            if (ruNode instanceof Project) MainFrame.getInstance().getTreeRadnaSpP().setRightComponent(new JPanel());
         }else {
             ErrorFactory.getInstance().generateError("Slektuj cvor koji nije RadnaPovrsina"
             , 2, "Ne moze se brisati Radna Povrsina");

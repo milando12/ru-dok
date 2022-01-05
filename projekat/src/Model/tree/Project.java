@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Project extends RuNodeComposit implements IPublisher {
+public class Project extends RuNodeComposit {
 
     public Project(String name, RuNode parent) {
         super(name, parent);
@@ -39,9 +39,9 @@ public class Project extends RuNodeComposit implements IPublisher {
         }
     }
 
-    public void changeName(String name){
-        this.setName(name);
-        notifySubscribers(this);
-    }
+//    public void changeName(String name){
+//        this.setName(name);
+//        notifySubscribers(this);
+//    }
 
 }

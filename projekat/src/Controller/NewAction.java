@@ -1,5 +1,6 @@
 package Controller;
 
+import Command.NewCommand;
 import Factory.FactoryGenerator;
 import Factory.NodeFactories.NodeFactory;
 import Model.tree.Slide;
@@ -35,13 +36,15 @@ public class NewAction extends AbstractRudokAction {
                 ErrorFactory.getInstance().generateError("Ne postoji stuktura niza od slajda"
                         , 2, "Upozorenje");
             }else {
-                NodeFactory nodeFactory= FactoryGenerator.returnNodeFactroy(selectedTreeNode);
-                MyTreeNode child= nodeFactory.makeTreeNode(selectedTreeNode);
+                MainFrame.getInstance().getCommandManager()
+                        .addCommand(new NewCommand(selectedTreeNode,parent));
 
-                selectedTreeNode.addChild(child);
-                child.setParent(selectedTreeNode);
+//                NodeFactory nodeFactory= FactoryGenerator.returnNodeFactroy(selectedTreeNode);
+//                MyTreeNode child= nodeFactory.makeTreeNode(selectedTreeNode);
+//
+//                selectedTreeNode.addChild(child);
+//                child.setParent(selectedTreeNode);
             }
-
         }else {
             ErrorFactory.getInstance().generateError("Selektuj neki cvor"
                     , 1, "");

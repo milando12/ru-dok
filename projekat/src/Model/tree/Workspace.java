@@ -18,9 +18,6 @@ public class Workspace extends RuNodeComposit {
             }
             this.getChildren().add(child);
 
-        }else {
-            //TO-DO:
-            // mozda treba ovde da ispisem kodrisniku da treba projekat da dodaje
         }
     }
 

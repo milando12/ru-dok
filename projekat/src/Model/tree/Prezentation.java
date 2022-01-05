@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Prezentation extends RuNodeComposit implements IPublisher {
+public class Prezentation extends RuNodeComposit {
     private String author;
 
 
@@ -57,9 +57,10 @@ public class Prezentation extends RuNodeComposit implements IPublisher {
         }
     }
 
-    public void changeName(String name){
-        this.setName(name);
-        ((Project)this.getParent()).notifySubscribers(this);
-    }
+
+//    public void changeName(String name){
+//        this.setName(name);
+//        ((Project)this.getParent()).notifySubscribers(this);
+//    }
 
 }

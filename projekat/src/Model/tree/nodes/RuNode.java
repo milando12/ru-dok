@@ -1,5 +1,7 @@
 package Model.tree.nodes;
 
+import Model.tree.Project;
+import Model.tree.Workspace;
 import Observer.IPublisher;
 import Observer.ISubscriber;
 import lombok.Getter;
@@ -41,6 +43,16 @@ public abstract class RuNode implements IPublisher {
         for (ISubscriber listener: subscribers) {
 
             listener.update(notification);
+        }
+    }
+
+    public void changeName(String name){
+        this.setName(name);
+        RuNode project= this;
+        if (!(project instanceof Workspace)){
+            while (!(project instanceof Project))
+                project= project.getParent();
+            project.notifySubscribers(project);
         }
     }
 
