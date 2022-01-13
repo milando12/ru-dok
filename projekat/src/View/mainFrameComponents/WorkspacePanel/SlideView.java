@@ -22,6 +22,8 @@ import java.util.List;
 public class SlideView extends JPanel implements ISubscriber {
     private Slide slide;
 
+    private boolean sShowS;
+
     private JLabel slideNumLB;
 
     private String urlSlike;
@@ -30,12 +32,14 @@ public class SlideView extends JPanel implements ISubscriber {
 
     public SlideView(Slide slide, int prefHeight){
         this.slide= slide;
+        sShowS= false;
         initialiseGUI();
         setPreferredSize(new Dimension(50,prefHeight));
         new MouseSlotContoller(this);
     }
     public SlideView(Slide slide){
         this.slide= slide;
+        sShowS= true;
         initialiseGUI();
         add(slideNumLB);
     }
@@ -60,13 +64,20 @@ public class SlideView extends JPanel implements ISubscriber {
         }
         g.drawImage(img,0,0,getWidth(),getHeight(),null);
 
-        slotViewList.removeAll(slotViewList);
-        for (Slot s:slide.getSlots()) {
-            slotViewList.add(new SlotView(s));
+        if (sShowS){
+            for (Slot s:slide.getSlots()) {
+                s.getSlotHandler().paint((Graphics2D) g);
+            }
+        }else {
+            slotViewList.removeAll(slotViewList);
+            for (Slot s:slide.getSlots()) {
+                slotViewList.add(new SlotView(s));
+            }
+            for (SlotView sv:slotViewList) {
+                sv.paint((Graphics2D)g);
+            }
         }
-        for (SlotView sv:slotViewList) {
-            sv.paint((Graphics2D)g);
-        }
+
         repaint();
 
 
