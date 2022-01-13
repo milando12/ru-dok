@@ -1,10 +1,12 @@
 package State;
 
+import Model.Slot.Slot;
 import Model.tree.Prezentation;
 import Model.tree.Slide;
 import View.MainFrame;
 import View.mainFrameComponents.WorkspacePanel.PresentationView;
 import View.mainFrameComponents.WorkspacePanel.SlideView;
+import View.Dialogs.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +29,8 @@ public class EditState implements State{
 
     private JPanel presentationToolbar;
 
+    private JScrollPane presentatioToolbarSCP;
+
     private JButton slideShowBT;
     private JButton addSlotStateBT;
     private JButton deleteSlotStateBT;
@@ -35,6 +39,8 @@ public class EditState implements State{
     private JButton colorBT;
     private JButton abruptnessBT;
     private JButton strokeWidthBT;
+    private JButton contentTypeBT;
+    private JButton slotEditorBT;
 
     private PresentationView presentationView;
 
@@ -58,6 +64,12 @@ public class EditState implements State{
         deleteSlotStateBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
                 "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/eraser.png"));
         deleteSlotStateBT.setToolTipText("delete Slot");
+        contentTypeBT= new JButton("T");
+//        contentTypeBT.setIcon(new ImageIcon("C:/Users/test/IdeaProjects" +
+//                "/DizajnSoftvera/rudok-milando12/projekat/src/Controller/slike/eraser.png"));
+        contentTypeBT.setToolTipText("change slot type");
+        slotEditorBT= new JButton("E");
+        slotEditorBT.setToolTipText("otvori slotEditor za selektovane slotove");
         abruptnessBT= new JButton("A");
         strokeWidthBT= new JButton("S");
 
@@ -67,6 +79,9 @@ public class EditState implements State{
         presentationPNL= new JPanel();presentationPNL.setLayout(new BorderLayout());
         presentationToolbar = new JPanel();
 
+        presentatioToolbarSCP= new JScrollPane(presentationToolbar
+                , ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER
+                , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 
         makeSlidesPNL();
@@ -95,6 +110,28 @@ public class EditState implements State{
             presentationView.getEditStateStateManager().getAddSlotState()
                     .setStrokeWidth(Float.parseFloat(JOptionPane.showInputDialog(presentationView
                             , "Unesite debljinu okvira Slota")));
+        });
+        contentTypeBT.addActionListener(e -> {
+            presentationView.getEditStateStateManager().getAddSlotState().changeSlotType();
+        });
+
+        slotEditorBT.addActionListener(e -> {
+            for (Component s:slidesPNL.getComponents()) {
+                SlideView slideView= (SlideView) s;
+                for (Slot m: slideView.getSlide().getSlots()) {
+                    if (m.getSelection()){
+                        if (m.getType()){
+                            TextEditorDialog ted=
+                                    new TextEditorDialog(MainFrame.getInstance(), m);
+                            ted.setVisible(true);
+                        }else {
+                            PictureChooserDialog pcd=
+                                    new PictureChooserDialog(MainFrame.getInstance(), m);
+                            pcd.setVisible(true);
+                        }
+                    }
+                }
+            }
         });
     }
 
@@ -130,15 +167,19 @@ public class EditState implements State{
     private void makeArrangements(){
         presentationToolbar.add(slideShowBT, Component.LEFT_ALIGNMENT);
         presentationToolbar.add(addSlotStateBT);
+        presentationToolbar.add(contentTypeBT);
         presentationToolbar.add(deleteSlotStateBT);
         presentationToolbar.add(colorBT);
         presentationToolbar.add(abruptnessBT);
         presentationToolbar.add(strokeWidthBT);
         presentationToolbar.add(selectSlotStateBT);
+        presentationToolbar.add(slotEditorBT);
         presentationToolbar.add(moveSlotStateBT);
 
+//        presentatioToolbarSCP.add();
+
         presentationView.setLayout(new BorderLayout());
-        presentationView.add(presentationToolbar, BorderLayout.NORTH);
+        presentationView.add(presentatioToolbarSCP, BorderLayout.NORTH);
         presentationView.add(slidesScrP, BorderLayout.CENTER);
         presentationView.add(previewScrP, BorderLayout.WEST);
     }

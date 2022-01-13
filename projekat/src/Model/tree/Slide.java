@@ -1,6 +1,6 @@
 package Model.tree;
 
-import Model.Slot;
+import Model.Slot.Slot;
 import Model.tree.nodes.RuNode;
 import View.SlotView;
 import lombok.Getter;

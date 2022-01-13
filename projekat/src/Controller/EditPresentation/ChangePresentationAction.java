@@ -2,11 +2,10 @@ package Controller.EditPresentation;
 
 import Controller.AbstractRudokAction;
 import Model.tree.Prezentation;
-import View.EditPresentationDialog;
+import View.Dialogs.EditPresentationDialog;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
 import Error.*;
-import com.sun.tools.javac.Main;
 
 import java.awt.event.ActionEvent;
 

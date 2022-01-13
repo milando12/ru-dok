@@ -1,6 +1,6 @@
 package State.EditStates;
 
-import Model.Slot;
+import Model.Slot.Slot;
 import Model.tree.Slide;
 import View.SlotView;
 import lombok.Getter;
@@ -16,6 +16,7 @@ public class AddSlotState extends SlotState {
     private float strokeWidth= 3;
     private boolean abruptness= false;
     private Stroke s;
+    private boolean slotType= true;
 
     @Override
     public void mouseClicked(Point point, Slide slide, List<SlotView> slotViewList) {
@@ -28,10 +29,14 @@ public class AddSlotState extends SlotState {
                     0.0f);
         }else s=  new BasicStroke(strokeWidth);
 
-        slide.addSlot(new Slot(point, c, s));
+        slide.addSlot(new Slot(point, c, s, slotType));
     }
 
     public void changeAbruptness(){
         this.abruptness= !this.abruptness;
+    }
+
+    public void changeSlotType(){
+        this.slotType= !this.slotType;
     }
 }

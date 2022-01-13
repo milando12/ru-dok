@@ -1,4 +1,4 @@
-package View;
+package View.Dialogs;
 
 import Controller.EditPresentation.ChangeAuthorAction;
 import Controller.EditPresentation.ChangeThemeAction;

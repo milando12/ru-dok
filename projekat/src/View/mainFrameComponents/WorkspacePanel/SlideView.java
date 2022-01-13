@@ -1,8 +1,7 @@
 package View.mainFrameComponents.WorkspacePanel;
 
 import Controller.MouseSlotContoller;
-import Model.Slot;
-import Model.tree.Prezentation;
+import Model.Slot.Slot;
 import Model.tree.Slide;
 import Observer.ISubscriber;
 import View.SlotView;

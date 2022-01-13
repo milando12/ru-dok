@@ -1,6 +1,6 @@
 package View;
 
-import Model.Slot;
+import Model.Slot.Slot;
 import lombok.Getter;
 import lombok.Setter;
 

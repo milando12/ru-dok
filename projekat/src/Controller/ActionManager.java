@@ -13,6 +13,7 @@ public class ActionManager {
     private RemoveAction removeAction;
     private UndoAction undoAction;
     private RedoAction redoAction;
+    private ShareAction shareAction;
 
 
     public ActionManager() {
@@ -26,6 +27,7 @@ public class ActionManager {
         removeAction= new RemoveAction();
         undoAction= new UndoAction();
         redoAction= new RedoAction();
+        shareAction= new ShareAction();
     }
 
 }

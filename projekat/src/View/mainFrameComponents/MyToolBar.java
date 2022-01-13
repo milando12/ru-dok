@@ -21,6 +21,9 @@ public class MyToolBar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getChangePresentation());
         addSeparator();
 
+        add(MainFrame.getInstance().getActionManager().getShareAction());
+        addSeparator();
+
         add(MainFrame.getInstance().getActionManager().getUndoAction());
         addSeparator();
 

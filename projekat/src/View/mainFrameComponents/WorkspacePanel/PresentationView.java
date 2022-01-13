@@ -1,5 +1,6 @@
 package View.mainFrameComponents.WorkspacePanel;
 
+import Model.Slot.Slot;
 import Model.tree.Prezentation;
 import Observer.ISubscriber;
 import State.EditStates.EditStateStateManager;
@@ -12,6 +13,8 @@ import lombok.Setter;
 public class PresentationView extends javax.swing.JPanel implements ISubscriber {
     private Prezentation prezentation;
 
+    private Slot lastSelectedSlot;
+
     private StateManager stateManager;
     private EditStateStateManager editStateStateManager;
 
@@ -21,6 +24,7 @@ public class PresentationView extends javax.swing.JPanel implements ISubscriber 
         setPrezentation(prezentation);
         this.stateManager.getCurrent()
                 .representation(this);
+        lastSelectedSlot= null;
     }
 
     public void setPrezentation(Prezentation prezentation){

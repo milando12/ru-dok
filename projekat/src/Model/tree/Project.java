@@ -39,7 +39,12 @@ public class Project extends RuNodeComposit {
         }
     }
 
-//    public void changeName(String name){
+    @Override
+    public String toString() {
+        return getName();
+    }
+
+    //    public void changeName(String name){
 //        this.setName(name);
 //        notifySubscribers(this);
 //    }

@@ -1,7 +1,6 @@
 package Controller;
 
-import Controller.AbstractRudokAction;
-import View.InfoDijalog;
+import View.Dialogs.InfoDijalog;
 import View.MainFrame;
 
 import java.awt.event.ActionEvent;

@@ -1,10 +1,9 @@
 package Controller.EditPresentation;
 
 import Model.tree.Prezentation;
-import View.EditPresentationDialog;
+import View.Dialogs.EditPresentationDialog;
 import View.MainFrame;
 import View.tree.model.MyTreeNode;
-import Error.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

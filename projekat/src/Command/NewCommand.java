@@ -30,6 +30,7 @@ public class NewCommand extends AbstractCommand{
         selectedTreeNode.addChild(child);
         child.setParent(selectedTreeNode);
 
+
         SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMyJTree());
         MainFrame.getInstance().getMyJTree().expandPath(MainFrame.getInstance()
                 .getMyJTree().getSelectionPath());
