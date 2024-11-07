@@ -1,5 +1,1 @@
-# rudok-milando12
-rudok-milando12 created by GitHub Classroom
-
-
-Milan Došlić RN35/20
+PowerPoint-like project built in Java with design patterns(command pattern, factory method pattern, state pattern...)
